@@ -5,13 +5,14 @@
 系统要求：Linux，Python3，curl
 
 创建目录
-mkdir -p /data/home/wordpress
+
+**mkdir -p /data/home/wordpress**
 
 如果你不需要这个地址请改源码
 
 然后在Crontab中添加
 
-00 00 * * * /usr/bin/python3 /path/to/wp.py
+**00 00 * * * /usr/bin/python3 /path/to/wp.py**
 
 /path/to改为你wp.py文件目录，例如/root
 
