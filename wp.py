@@ -4,7 +4,7 @@ from subprocess import (PIPE, Popen)
 import os
 import json
 
-
+dir = '/data/home/wordpress'
 
 def System(command):
     '''
@@ -16,21 +16,20 @@ if __name__ == "__main__":
 	result = json.loads(System('curl -s -H "Cache-Control: no-cache" https://api.wordpress.org/core/version-check/1.7/?locale=zh_CN'))
 	version = result['offers'][0]['version']
 	download = result['offers'][0]['download']
-	file = open('wpversion.txt','r')
 	if os.path.exists('wpversion.txt'):
 		file = open('wpversion.txt','r')
 
 		if version != file.read():
-			System('wget -O /data/home/wordpress/latest.zip {}'.format(download))
+			System('wget -O {}/latest.zip {}'.format(dir,download))
 			file.close()
 			file = open('wpversion.txt','w')
 			file.write(version)
 	else:
 		file = open('wpversion.txt','w')
 		file.write(version)
-		if os.path.exists('/data/home/wordpress/latest.zip'):
-			os.remove('/data/home/wordpress/latest.zip')
-		System('wget -O /data/home/wordpress/latest.zip {}'.format(download))
+		if os.path.exists('{}/latest.zip'.format(dir)):
+			os.remove('{}/latest.zip'.format(dir))
+		System('wget -O {}/latest.zip {}'.format(dir,download))
 		
 
 	file.close()
