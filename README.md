@@ -17,9 +17,3 @@
 /path/to改为你wp.py文件目录，例如/root
 
 
-
-## 国内Wordpress镜像
-
-http://demosisto.cn/wordpress/latest.zip
-
-每日EST时间12点自动同步Wordpress
